@@ -132,6 +132,18 @@ gg1 <- tmp |>
 gg1
 ```
 
+```{r}
+tmp |> 
+  ggplot(aes(pcwd_max1 / pcwd_max0)) +
+  geom_histogram(color = "black", fill = "grey", bins = 10) +
+  geom_vline(xintercept = 1.0, linetype = "dotted") +
+  theme_classic() +
+  labs(
+    x = "Ratio (unitless)",
+    title = "Amplification"
+  )
+```
+
 ### ModE-Sim recent (1975-1999)
 
 Record PCWD by region in ERA5, years 2000-2024 vs. in years 1975-1999 and all ensemble members in ModE-Sim.
@@ -783,7 +795,7 @@ gg12 <- tmp |>
   scale_x_log10() +
   scale_y_log10() +
   labs(
-    x = "ModE-Sim 1850-1999 (mm)",
+    x = "ModE-Sim 1420-1999 (mm)",
     y = "ERA5 2000-2024 (mm)",
     subtitle = bquote(italic(N) == .(n_greater)),
     title = "   "
@@ -943,7 +955,7 @@ ggsave(here("fig/30yextremes_pooled_records_references.pdf"), plot = row4, width
 
 ```{r}
 gg_combined <- cowplot::plot_grid(
-  row1, row4,
+  row1, row3,
   nrow = 2
   )
 ggsave(here("fig/combined_references.pdf"), plot = gg_combined, width = 15, height = 8)
