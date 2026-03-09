@@ -89,8 +89,8 @@ ggplot() +
   geom_vline(xintercept = max_era5_modern$year, color = "tomato", linetype = "dotted") +
   theme_classic() +
   labs(
-    subtitle = "Klima-Reanalyse Daten (Beobachtungen) \nJährliche Höchstwerte",
-    x = "Year",
+    subtitle = "Klima-Reanalyse Daten (Beobachtungen) \nJährliche Höchstwerte, West- und Zentraleuropa",
+    x = "Jahr",
     y = "PCWD (mm)"
   )
 
@@ -122,8 +122,8 @@ ggplot() +
   geom_hline(yintercept = max_modesim_global$pcwd, alpha = 0.3, linewidth = 0.2) +
   theme_classic() +
   labs(
-    subtitle = "Klima-Reanalyse Daten und Modell, N = 1 \nJährliche Höchstwerte",
-    x = "Year",
+    subtitle = "Klima-Reanalyse Daten und Modell, N = 1 \nJährliche Höchstwerte, West- und Zentraleuropa",
+    x = "Jahr",
     y = "PCWD (mm)"
   )
 
@@ -152,8 +152,8 @@ ggplot() +
   geom_hline(yintercept = max_modesim_global$pcwd, alpha = 0.3, linewidth = 0.2) +
   theme_classic() +
   labs(
-    subtitle = "Klima-Reanalyse Daten und Modell, N = 20 \nJährliche Höchstwerte",
-    x = "Year",
+    subtitle = "Klima-Reanalyse Daten und Modell, N = 20 \nJährliche Höchstwerte, West- und Zentraleuropa",
+    x = "Jahr",
     y = "PCWD (mm)"
   )
 
@@ -213,8 +213,8 @@ ggplot() +
   geom_hline(yintercept = max_modesim_x30$pcwdx30, alpha = 0.3, linewidth = 0.2) +
   theme_classic() +
   labs(
-    subtitle = "Klima-Reanalyse Daten und Modell, N = 20 \n30-Jahr Extremereignis",
-    x = "Year",
+    subtitle = "Klima-Reanalyse Daten und Modell, N = 20 \n30-Jahr Extremereignis, West- und Zentraleuropa",
+    x = "Jahr",
     y = "30-Jahr Extremwert PCWD (mm)"
   )
 ggsave(

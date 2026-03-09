@@ -816,149 +816,149 @@ row3 <- cowplot::plot_grid(
 ggsave(here("fig/30yextremes_records_references.pdf"), plot = row3, width = 15, height = 4)
 ```
 
-## 30-year extremes (pooled)
+<!-- ## 30-year extremes (pooled) -->
 
-### ModE-Sim recent (1975-1999)
+<!-- ### ModE-Sim recent (1975-1999) -->
 
-```{r}
-df_30x_pooled_recent <- df_modesim_30x_pooled_recent |> 
-  select(-data, pcwd_x30_ref0 = pcwd_30x) |> 
-  left_join(
-    df_era5_30x |> 
-      select(region, pcwd_x30_ref1),
-    by = join_by(region)
-  )
-```
+<!-- ```{r} -->
+<!-- df_30x_pooled_recent <- df_modesim_30x_pooled_recent |>  -->
+<!--   select(-data, pcwd_x30_ref0 = pcwd_30x) |>  -->
+<!--   left_join( -->
+<!--     df_era5_30x |>  -->
+<!--       select(region, pcwd_x30_ref1), -->
+<!--     by = join_by(region) -->
+<!--   ) -->
+<!-- ``` -->
 
-```{r}
-tmp <- df_30x_pooled_recent |> 
-  mutate(is_greater = pcwd_x30_ref1 > pcwd_x30_ref0)
+<!-- ```{r} -->
+<!-- tmp <- df_30x_pooled_recent |>  -->
+<!--   mutate(is_greater = pcwd_x30_ref1 > pcwd_x30_ref0) -->
 
-n_greater <- tmp |> 
-  ungroup() |> 
-  summarise(n_greater = sum(is_greater)) |> 
-  pull(n_greater)
+<!-- n_greater <- tmp |>  -->
+<!--   ungroup() |>  -->
+<!--   summarise(n_greater = sum(is_greater)) |>  -->
+<!--   pull(n_greater) -->
 
-gg13 <- tmp |> 
-  ggplot(aes(x = pcwd_x30_ref0, y = pcwd_x30_ref1, color = is_greater)) +
-  geom_point(show.legend = FALSE, size = 0.75) +
-  geom_abline(slope = 1, intercept = 0, linetype = "dotted") +
-  coord_equal() +
-  scale_color_manual(values = c("grey30", "tomato")) +
-  theme_classic() +
-  scale_x_log10() +
-  scale_y_log10() +
-  labs(
-    x = "ModE-Sim 1975-1999 (mm)",
-    y = "ERA5 2000-2024 (mm)",
-    subtitle = bquote(italic(N) == .(n_greater)),
-    title = "   "
-  )
+<!-- gg13 <- tmp |>  -->
+<!--   ggplot(aes(x = pcwd_x30_ref0, y = pcwd_x30_ref1, color = is_greater)) + -->
+<!--   geom_point(show.legend = FALSE, size = 0.75) + -->
+<!--   geom_abline(slope = 1, intercept = 0, linetype = "dotted") + -->
+<!--   coord_equal() + -->
+<!--   scale_color_manual(values = c("grey30", "tomato")) + -->
+<!--   theme_classic() + -->
+<!--   scale_x_log10() + -->
+<!--   scale_y_log10() + -->
+<!--   labs( -->
+<!--     x = "ModE-Sim 1975-1999 (mm)", -->
+<!--     y = "ERA5 2000-2024 (mm)", -->
+<!--     subtitle = bquote(italic(N) == .(n_greater)), -->
+<!--     title = "   " -->
+<!--   ) -->
 
-gg13
-```
+<!-- gg13 -->
+<!-- ``` -->
 
-### ModE-Sim historical (1850-1999)
+<!-- ### ModE-Sim historical (1850-1999) -->
 
-```{r}
-df_30x_pooled_historical <- df_modesim_30x_pooled_historical |> 
-  select(-data, pcwd_x30_ref0 = pcwd_30x) |> 
-  left_join(
-    df_era5_30x |> 
-      select(region, pcwd_x30_ref1),
-    by = join_by(region)
-  )
-```
+<!-- ```{r} -->
+<!-- df_30x_pooled_historical <- df_modesim_30x_pooled_historical |>  -->
+<!--   select(-data, pcwd_x30_ref0 = pcwd_30x) |>  -->
+<!--   left_join( -->
+<!--     df_era5_30x |>  -->
+<!--       select(region, pcwd_x30_ref1), -->
+<!--     by = join_by(region) -->
+<!--   ) -->
+<!-- ``` -->
 
-```{r}
-tmp <- df_30x_pooled_historical |> 
-  mutate(is_greater = pcwd_x30_ref1 > pcwd_x30_ref0)
+<!-- ```{r} -->
+<!-- tmp <- df_30x_pooled_historical |>  -->
+<!--   mutate(is_greater = pcwd_x30_ref1 > pcwd_x30_ref0) -->
 
-n_greater <- tmp |> 
-  ungroup() |> 
-  summarise(n_greater = sum(is_greater)) |> 
-  pull(n_greater)
+<!-- n_greater <- tmp |>  -->
+<!--   ungroup() |>  -->
+<!--   summarise(n_greater = sum(is_greater)) |>  -->
+<!--   pull(n_greater) -->
 
-gg14 <- tmp |> 
-  ggplot(aes(x = pcwd_x30_ref0, y = pcwd_x30_ref1, color = is_greater)) +
-  geom_point(show.legend = FALSE, size = 0.75) +
-  geom_abline(slope = 1, intercept = 0, linetype = "dotted") +
-  coord_equal() +
-  scale_color_manual(values = c("grey30", "tomato")) +
-  theme_classic() +
-  scale_x_log10() +
-  scale_y_log10() +
-  labs(
-    x = "ModE-Sim 1850-1999 (mm)",
-    y = "ERA5 2000-2024 (mm)",
-    subtitle = bquote(italic(N) == .(n_greater)),
-    title = "   "
-  )
+<!-- gg14 <- tmp |>  -->
+<!--   ggplot(aes(x = pcwd_x30_ref0, y = pcwd_x30_ref1, color = is_greater)) + -->
+<!--   geom_point(show.legend = FALSE, size = 0.75) + -->
+<!--   geom_abline(slope = 1, intercept = 0, linetype = "dotted") + -->
+<!--   coord_equal() + -->
+<!--   scale_color_manual(values = c("grey30", "tomato")) + -->
+<!--   theme_classic() + -->
+<!--   scale_x_log10() + -->
+<!--   scale_y_log10() + -->
+<!--   labs( -->
+<!--     x = "ModE-Sim 1850-1999 (mm)", -->
+<!--     y = "ERA5 2000-2024 (mm)", -->
+<!--     subtitle = bquote(italic(N) == .(n_greater)), -->
+<!--     title = "   " -->
+<!--   ) -->
 
-gg14
-```
+<!-- gg14 -->
+<!-- ``` -->
 
-### ModE-Sim multi-century (1420-1999)
+<!-- ### ModE-Sim multi-century (1420-1999) -->
 
-```{r}
-df_30x_pooled_multicent <- df_modesim_30x_pooled_multicent |> 
-  select(-data, pcwd_x30_ref0 = pcwd_30x) |> 
-  left_join(
-    df_era5_30x |> 
-      select(region, pcwd_x30_ref1),
-    by = join_by(region)
-  )
-```
+<!-- ```{r} -->
+<!-- df_30x_pooled_multicent <- df_modesim_30x_pooled_multicent |>  -->
+<!--   select(-data, pcwd_x30_ref0 = pcwd_30x) |>  -->
+<!--   left_join( -->
+<!--     df_era5_30x |>  -->
+<!--       select(region, pcwd_x30_ref1), -->
+<!--     by = join_by(region) -->
+<!--   ) -->
+<!-- ``` -->
 
-```{r}
-tmp <- df_30x_pooled_multicent |> 
-  mutate(is_greater = pcwd_x30_ref1 > pcwd_x30_ref0)
+<!-- ```{r} -->
+<!-- tmp <- df_30x_pooled_multicent |>  -->
+<!--   mutate(is_greater = pcwd_x30_ref1 > pcwd_x30_ref0) -->
 
-n_greater <- tmp |> 
-  ungroup() |> 
-  summarise(n_greater = sum(is_greater)) |> 
-  pull(n_greater)
+<!-- n_greater <- tmp |>  -->
+<!--   ungroup() |>  -->
+<!--   summarise(n_greater = sum(is_greater)) |>  -->
+<!--   pull(n_greater) -->
 
-gg15 <- tmp |> 
-  ggplot(aes(x = pcwd_x30_ref0, y = pcwd_x30_ref1, color = is_greater)) +
-  geom_point(show.legend = FALSE, size = 0.75) +
-  geom_abline(slope = 1, intercept = 0, linetype = "dotted") +
-  coord_equal() +
-  scale_color_manual(values = c("grey30", "tomato")) +
-  theme_classic() +
-  scale_x_log10() +
-  scale_y_log10() +
-  labs(
-    x = "ModE-Sim 1420-1999 (mm)",
-    y = "ERA5 2000-2024 (mm)",
-    subtitle = bquote(italic(N) == .(n_greater)),
-    title = "   "
-  )
+<!-- gg15 <- tmp |>  -->
+<!--   ggplot(aes(x = pcwd_x30_ref0, y = pcwd_x30_ref1, color = is_greater)) + -->
+<!--   geom_point(show.legend = FALSE, size = 0.75) + -->
+<!--   geom_abline(slope = 1, intercept = 0, linetype = "dotted") + -->
+<!--   coord_equal() + -->
+<!--   scale_color_manual(values = c("grey30", "tomato")) + -->
+<!--   theme_classic() + -->
+<!--   scale_x_log10() + -->
+<!--   scale_y_log10() + -->
+<!--   labs( -->
+<!--     x = "ModE-Sim 1420-1999 (mm)", -->
+<!--     y = "ERA5 2000-2024 (mm)", -->
+<!--     subtitle = bquote(italic(N) == .(n_greater)), -->
+<!--     title = "   " -->
+<!--   ) -->
 
-gg15
-```
+<!-- gg15 -->
+<!-- ``` -->
 
-### Combined plot
+<!-- ### Combined plot -->
 
-```{r}
-row4 <- cowplot::plot_grid(
-  gg9, gg13, gg14, gg15,
-  nrow = 1, 
-  align = "v",
-  labels = letters[9:12]
-  )
-ggsave(here("fig/30yextremes_pooled_records_references.pdf"), plot = row4, width = 15, height = 4)
-```
+<!-- ```{r} -->
+<!-- row4 <- cowplot::plot_grid( -->
+<!--   gg9, gg13, gg14, gg15, -->
+<!--   nrow = 1,  -->
+<!--   align = "v", -->
+<!--   labels = letters[9:12] -->
+<!--   ) -->
+<!-- ggsave(here("fig/30yextremes_pooled_records_references.pdf"), plot = row4, width = 15, height = 4) -->
+<!-- ``` -->
 
 
 ## All combined plot
 
 ```{r}
 gg_combined <- cowplot::plot_grid(
-  row1, row3,
-  nrow = 2
+  row1, row2, row3,
+  ncol = 1
   )
-ggsave(here("fig/combined_references.pdf"), plot = gg_combined, width = 15, height = 8)
+ggsave(here("fig/combined_references.pdf"), plot = gg_combined, width = 15, height = 12)
 ```
 
 
