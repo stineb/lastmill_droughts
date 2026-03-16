@@ -2,7 +2,13 @@
 title: "Extended results suggestion: Are 21st century droughts unprecedented?"
 author: "Beni Stocker"
 date: "2025-08-25"
-output: html_document
+output: 
+  html_document:
+    toc: true
+    toc_float:
+      toc_collapsed: true
+    toc_depth: 3
+    number_sections: true
 ---
 
 ```{r setup, include=FALSE}
@@ -300,6 +306,7 @@ row1 <- cowplot::plot_grid(
   align = "v",
   labels = letters[1:4]
   )
+row1
 ggsave(here("fig/annual_records_references.pdf"), plot = row1, width = 15, height = 4)
 ```
 
@@ -531,6 +538,7 @@ row2 <- cowplot::plot_grid(
   align = "v",
   labels = letters[5:8]
   )
+row2
 ggsave(here("fig/30yrmeans_records_references.pdf"), plot = row2, width = 15, height = 4)
 ```
 
@@ -813,6 +821,7 @@ row3 <- cowplot::plot_grid(
   align = "v",
   labels = letters[9:12]
   )
+row3
 ggsave(here("fig/30yextremes_records_references.pdf"), plot = row3, width = 15, height = 4)
 ```
 
@@ -958,6 +967,7 @@ gg_combined <- cowplot::plot_grid(
   row1, row2, row3,
   ncol = 1
   )
+gg_combined
 ggsave(here("fig/combined_references.pdf"), plot = gg_combined, width = 15, height = 12)
 ```
 
